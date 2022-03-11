@@ -1,0 +1,7 @@
+{
+  "question": "Given that $%a = 1$ and $%b = 2$, evaluate $%a + b$.",
+  "answer_a": "%1",
+  "answer_b": "%2",
+  "answer_c": "%3",
+  "answer_d": "%4"
+}

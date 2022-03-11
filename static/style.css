@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Nova+Slim|Lato|Roboto');
+html{font-family: "Lato", cursive;}
+
+header{
+  text-align: center;
+}
+
+h1{
+  color: #ff72a1;
+}
+
+nav {
+  background: #e94157;
+  padding: 10px 16px;   
+}
+
+nav>a {
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin:0 16px;
+}
+
+nav>a:hover {
+  color: rgb(255, 178, 191);
+  text-decoration: none;
+}
+
+#intro-1 {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+#intro-2 {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+#intro-3 {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+table, th, td{
+  border:1px solid black;
+  border-collapse: collapse;
+  padding:16px;
+}
+
+table{margin:24px auto;}
+
