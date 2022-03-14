@@ -6,6 +6,7 @@ base = "https://chart.googleapis.com/chart?cht=tx&chl="
 
 def get_formula(formula, output="pdf/_texit.png"):
   en_formula = encode(formula)
+  
 
 class PDF(PDF):
   def parse(self, dic):
@@ -13,8 +14,8 @@ class PDF(PDF):
       print(key)
       key_short = key[0] + key[-1]
 
-      k
+      pass
 
 
 
-get
+get_formula("amogus + sus + ratio")
