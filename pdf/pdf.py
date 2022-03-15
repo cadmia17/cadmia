@@ -40,12 +40,12 @@ pdf.cell(150, 15, txt="Use the multiple-choice answer sheet for Questions 1--10.
 
 
 
-pdf.multiple_choice(n=1, question=q_1)
+#pdf.multiple_choice(n=1, question=q_1)
 
 pdf.parse(q_1)
 
 
-pdf.output("unfunny.pdf")
+pdf.output("pdf/unfunny.pdf")
 
 
 s = open("pdf/stats.txt")

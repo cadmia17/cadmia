@@ -4,7 +4,7 @@ class PDF(FPDF):
   def dummy(self, x, y):
     self.cell(x, y, txt="", ln=2)
   
-  def title_page(self, sth=6.5, year=2022, rtime=10, pen="black", logo="pdf/nsw_logo.png"):
+  def title_page(self, sth=6.5, year="2022", rtime="10", pen="black", logo="pdf/nsw_logo.png"):
     self.MARKDOWN_UNDERLINE_MARKER = "---" #fixes weird mkdown bug
     self.sth = sth
     
@@ -22,7 +22,7 @@ class PDF(FPDF):
     self.ln(h=27)
     
     self.set_font("Helvetica", "B", size=15.5)
-    self.cell(None, 7, txt=f"{year}", border=1, ln=0, align="L")
+    self.cell(w=10, h=7, txt=year, border=1, ln=0, align="L") #fix width
     
     self.set_font("Helvetica", "B", size=10.5)
     self.cell(200, 10, txt=" HIGHER SCHOOL CERTIFICATE EXAMINATION", ln=1, align="L")
@@ -54,9 +54,9 @@ class PDF(FPDF):
     
     self.cell(30, sth, txt=" * A reference sheet is provided at the back of this paper", ln=2, align="L")
     
-    self.multi_cell(135, sth, txt=" * For questions in Section II, show relevant mathematical reasoning and/or calculations", ln=2, align="L")
+    self.multi_cell(135, h=sth, txt=" * For questions in Section II, show relevant mathematical reasoning and/or calculations", align="", ln=2)
     
-    self.multi_cell(135, sth, txt=" * Write your Centre Number and Student Number on the Question 12 Writing Booklet attached", ln=2, align="L")
+    self.multi_cell(135, h=sth, txt=" * Write your Centre Number and Student Number on the Question 12 Writing Booklet attached", align="", ln=2)
     
     
     
