@@ -28,7 +28,12 @@ class PDF(PDF):
       for v in val_list:
         print(f"~ v! {v}")
         if not v.startswith("%"): #normal text
-          self.multi_cell(w=0, h=0, txt=v, ln=3)
+          #if the cell would >right side, multi_cell
+          #else cell
+          #fuck, am i going to have to rewrite multi_cell by myself for this??
+          #what the fuck is even causing this
+          #...is a whitespace at the beginning of a cell causing this???????
+          self.multi_cell(w=0, h=0, txt=v.strip(), ln=3)
           #print(f"added {v} to a multi-cell")
 
         else: #formula
