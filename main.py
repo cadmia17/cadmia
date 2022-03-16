@@ -17,7 +17,7 @@ aux = TAuxiliary("aux", 1)
 print(aux.difficulty)
 
 
-inp = open("input.json")
+inp = open("pdf/input.json")
 inp2 = json.load(inp)
 print(inp2)
 
