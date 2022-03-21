@@ -2,6 +2,36 @@ import json, shutil, requests
 from urllib.parse import quote as encode
 from pdf_templates import PDF
 
+
+###
+###
+###this code is quarantined
+###
+###
+
+
+import argparse
+import logging
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+  "-d", "--debug",
+  help="Print lots of debugging statements",
+  action="store_const", dest="loglevel", const=logging.DEBUG,
+  default=logging.WARNING,
+)
+args = parser.parse_args()    
+logging.basicConfig(level=args.loglevel)
+
+
+###
+###
+###end quarantine zone
+###
+###
+
+
+
 base = "https://chart.googleapis.com/chart?cht=tx&chl="
 
 def get_formula(formula, output="img.png"):
@@ -26,20 +56,20 @@ class PDF(PDF):
       val_list = val.split("$")
 
       for v in val_list:
-        print(f"~ v! {v}")
+        print(f"~ v = {v}")
         if not v.startswith("%"): #normal text
           #if the cell would >right side, multi_cell
           #else cell
           #fuck, am i going to have to rewrite multi_cell by myself for this??
           #what the fuck is even causing this
           #...is a whitespace at the beginning of a cell causing this???????
-          self.multi_cell(w=0, h=0, txt=v.strip(), ln=3)
+          self.multi_cell(w=5, h=self.sth, txt=v.strip(), ln=3) #w=NONE
           #print(f"added {v} to a multi-cell")
 
         else: #formula
           full_path = f"pdf/_{key_short}_{image_counter}.png"
           v = v[1:]
-          get_formula("v", full_path)
+          get_formula(v, full_path)
           self.image(full_path)
 
           image_counter += 1
