@@ -1,6 +1,7 @@
 import json, shutil, requests
 from urllib.parse import quote as encode
 from pdf_templates import PDF
+from fpdf import XPos, YPos
 
 
 ###
@@ -46,6 +47,7 @@ def get_formula(formula, output="img.png"):
 class PDF(PDF):
   def parse(self, dic):
     print(dic)
+    
     for key in dic.keys():
       image_counter = 1 #yes this starts at 1
       print(key)
@@ -56,25 +58,30 @@ class PDF(PDF):
       val_list = val.split("$")
 
       for v in val_list:
-        print(f"~ v = {v}")
-        if not v.startswith("%"): #normal text
-          #if the cell would >right side, multi_cell
-          #else cell
-          #fuck, am i going to have to rewrite multi_cell by myself for this??
-          #what the fuck is even causing this
-          #...is a whitespace at the beginning of a cell causing this???????
-          self.multi_cell(w=5, h=self.sth, txt=v.strip(), ln=3) #w=NONE
-          #print(f"added {v} to a multi-cell")
+        print(f"~ v = [{v}]")
+        v = v.strip()
+        print(f"~ v = [{v}]")
 
-        else: #formula
+        if v[0] == "%": #formula
           full_path = f"pdf/_{key_short}_{image_counter}.png"
           v = v[1:]
           get_formula(v, full_path)
           self.image(full_path)
 
           image_counter += 1
+        
+        else: #normal text
+          #if the cell would >right side, multi_cell
+          #else cell
+          #fuck, am i going to have to rewrite multi_cell by myself for this??
+          #what the fuck is even causing this
+          #...is a whitespace at the beginning of a cell causing this???????
+          print(f"w=30, h={self.sth}, txt={v}, new_x={XPos.END}, new_y={YPos.LAST}")
+          print(f"~ {v} is pre-multicell")
+          self.multi_cell(w=30, h=self.sth, txt=v, new_x=XPos.END, new_y=YPos.LAST) #
+          print(f"~ {v} is post-multicell")
+          #print(f"added {v} to a multi-cell")
           
 
-      pass
 
-get_formula("amogus + sus + ratio", output="pdf/sus.png")
+get_formula("L + ratio + standard + maidenless", output="pdf/sus.png")
