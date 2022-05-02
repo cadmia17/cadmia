@@ -39,14 +39,6 @@ def image_link(formula):
   return base + encode(formula)
 
 
-def get_formula(formula, output="img.png"): #dep
-  response = requests.get(base+image_link(formula), stream=True)
-  
-  with open(output, "wb") as out_file:
-    shutil.copyfileobj(response.raw, out_file)
-  del response
-
-
 class PDF(PDF):
   def parse(self, dic):
     print(dic) #after converting json to dictionary

@@ -14,7 +14,7 @@ class PDF(FPDF):
 
     self.add_page()
     
-    self.image(logo, w=24) #forgery
+    self.image(logo, w=24, alt_text="NESA logo")
     self.ln(h=4)
     
     self.set_font("Helvetica", size=13)
