@@ -22,7 +22,7 @@ class PDF(FPDF):
     self.ln(h=27)
     
     self.set_font("Helvetica", "B", size=15.5)
-    self.cell(w=10, h=7, txt=year, border=1, ln=0, align="L") #fix width
+    self.cell(w=14, h=7, txt=year, border=1, ln=0, align="C") #fix width
     
     self.set_font("Helvetica", "B", size=10.5)
     self.cell(200, 10, txt=" HIGHER SCHOOL CERTIFICATE EXAMINATION", ln=1, align="L")

@@ -35,53 +35,44 @@ logging.basicConfig(level=args.loglevel)
 
 base = "https://chart.googleapis.com/chart?cht=tx&chl="
 
-def get_formula(formula, output="img.png"):
-  en_formula = encode(formula)
+def image_link(formula):
+  return base + encode(formula)
 
-  response = requests.get(base+en_formula, stream=True)
+
+def get_formula(formula, output="img.png"): #dep
+  response = requests.get(base+image_link(formula), stream=True)
+  
   with open(output, "wb") as out_file:
     shutil.copyfileobj(response.raw, out_file)
   del response
-  
+
 
 class PDF(PDF):
   def parse(self, dic):
-    print(dic)
+    print(dic) #after converting json to dictionary
     
     for key in dic.keys():
-      image_counter = 1 #yes this starts at 1
       print(key)
-      key_short = key[0] + key[-1] #image id
 
-      val = dic[key]
+      val = dic[key] #question, ans a, ans b, ans c, ans d
 
-      val_list = val.split("$")
+      val_list = val.split("$") #splits into text, formula, text, etc.
 
-      for v in val_list:
-        print(f"~ v = [{v}]")
-        v = v.strip()
+      for v in val_list: #iterates for every text and formula
         print(f"~ v = [{v}]")
 
         if v[0] == "%": #formula
-          full_path = f"pdf/_{key_short}_{image_counter}.png"
-          v = v[1:]
-          get_formula(v, full_path)
-          self.image(full_path)
-
-          image_counter += 1
+          v = v[1:] #removes leading % indicating formula
+          
+          self.image(image_link(v), alt_text=v) #gets the link to the image
+          #then appends it to the pdf
+          
+          print(f"x: {self.get_x()}, y: {self.get_y()}")
         
         else: #normal text
           #if the cell would >right side, multi_cell
           #else cell
-          #fuck, am i going to have to rewrite multi_cell by myself for this??
-          #what the fuck is even causing this
-          #...is a whitespace at the beginning of a cell causing this???????
           print(f"w=30, h={self.sth}, txt={v}, new_x={XPos.END}, new_y={YPos.LAST}")
-          print(f"~ {v} is pre-multicell")
+
           self.multi_cell(w=30, h=self.sth, txt=v, new_x=XPos.END, new_y=YPos.LAST) #
-          print(f"~ {v} is post-multicell")
-          #print(f"added {v} to a multi-cell")
           
-
-
-get_formula("L + ratio + standard + maidenless", output="pdf/sus.png")
