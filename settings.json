@@ -1,0 +1,8 @@
+{
+  "time": 80.0,
+  "difficulty": 0.75,
+  "blocklist": ["polynomials"],
+  "extra_names": true,
+  "answer_c": "%3",
+  "answer_d": "%4"
+}

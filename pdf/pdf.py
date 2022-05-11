@@ -2,6 +2,8 @@ import texit, json
 
 pdf = texit.PDF()
 
+output_location = "output.pdf"
+
 #pdf.MARKDOWN_UNDERLINE_MARKER = "---"
 
 #pdf.set_left_margin(24)
@@ -13,39 +15,20 @@ pdf = texit.PDF()
 
 sth = 6.5 #standard title [page] height
 
-q_1_json = open("pdf/q1.json")
+q_1_json = open("pdf/q_1.json")
 q_1 = json.load(q_1_json)
 
 pdf.title_page(pen="black")
 
 
-
-
-
 #pdf.set_left_margin(23)
-pdf.set_top_margin(19)
-pdf.add_page() #page 1 of mc
 
-pdf.set_font("Times", "B", size=14)
-pdf.cell(200, 15, txt="Section I", ln=1, align="L")
-
-
-pdf.set_font("Times", "B", size=12)
-pdf.cell(200, 5, txt="10 marks", ln=1, align="L")
-pdf.cell(200, 5, txt="Attempt Questions 1--10", ln=1, align="L")
-pdf.cell(200, 5, txt="Allow about 15 minutes for this section", ln=1, align="L")
-
-pdf.set_font("Times", size=12)
-pdf.cell(150, 15, txt="Use the multiple-choice answer sheet for Questions 1--10.", border="B", ln=1, align="L")
-
-
-
-#pdf.multiple_choice(n=1, question=q_1)
+#pdf.multiple_choice(n=1, question=q1)
 
 pdf.parse(q_1)
 
 
-pdf.output("pdf/unfunny.pdf")
+pdf.output(output_location)
 
 
 s = open("pdf/stats.txt")

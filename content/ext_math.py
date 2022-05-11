@@ -2,10 +2,9 @@ from random import randint, choice
 import math
 import json
 
-v = False
-
 
 def vprint(text): #basic verbosity printer
+  v = False
   if v:
     print(text)
 
@@ -107,17 +106,6 @@ def quad_formula(a, b, c):
     return []
 
 
-
-
-
-
-
-
-
-
-
-
-
 def lead(n): #small strip sign #lead coeff
   if n > 1:
     return f"{n}"
@@ -161,3 +149,27 @@ def const(n): #small strip sign
 
   else:
     return f"- {-n}"
+
+
+def romanise(num): #converts to roman numerals from 1-10
+  roman = {
+    "1": "i",
+    "2": "ii",
+    "3": "iii",
+    "4": "iv",
+    "5": "v",
+    "6": "vi",
+    "7": "vii",
+    "8": "viii",
+    "9": "ix",
+    "10": "x",
+  }
+  return roman[str(num)]
+
+
+def get_multiple_choice(time): #multis given time
+  return math.ceil(time / 12)
+
+
+def get_short_marks(time): #marks of short section given time
+  return math.ceil(time / 12)

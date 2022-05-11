@@ -1,0 +1,14 @@
+{
+  "type": "short_answer",
+  "partite": true,
+  "count": 2,
+  "parts": {
+    "1": {
+      "question": "Why were you not doing task?",
+      "answer": "Bathroom"
+    },
+    "2": {
+      "question": "Are you the impostor?",
+      "answer": "No"
+    }
+  }

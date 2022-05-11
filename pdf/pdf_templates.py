@@ -14,7 +14,7 @@ class PDF(FPDF):
 
     self.add_page()
     
-    self.image(logo, w=24, alt_text="NESA logo")
+    self.image(logo, w=24, alt_text="NSW government logo")
     self.ln(h=4)
     
     self.set_font("Helvetica", size=13)
@@ -31,9 +31,6 @@ class PDF(FPDF):
     self.set_font("Helvetica", size=32.5)
     self.cell(200, 15, txt="Mathematics Extension 1", ln=1, align="L")
     self.ln(h=10)
-    
-    
-    
     
     
     self.set_font("Helvetica", "B", size=12)
@@ -56,12 +53,10 @@ class PDF(FPDF):
     
     self.multi_cell(135, h=sth, txt=" * For questions in Section II, show relevant mathematical reasoning and/or calculations", align="", ln=2)
     
-    self.multi_cell(135, h=sth, txt=" * Write your Centre Number and Student Number on the Question 12 Writing Booklet attached", align="", ln=2)
-    
+    self.multi_cell(135, h=sth, txt=" * Write your Centre Number and Student Number on all Writing Booklets attached", align="", ln=2)
     
     
     self.ln(h=10)
-    
     
     
     self.set_font("Helvetica", "B", size=12)
@@ -78,7 +73,6 @@ class PDF(FPDF):
     self.cell(30, sth, txt=" * Allow about 15 minutes for this section", ln=2, align="L")
     
     
-    
     self.ln(h=3)
     
     
@@ -86,18 +80,51 @@ class PDF(FPDF):
     self.cell(30, sth, txt="**Section II -- 60 marks** (pages 2-6)", ln=2, align="L", markdown=True)
     self.cell(30, sth, txt=" * Attempt Questions 11-14", ln=2, align="L")
     self.multi_cell(135, sth, txt=" * Allow about 1 hour and 45 minutes for this section", ln=2, align="L")
-
-
-
-
-
-
-
-
-
+  def sus0():
+    pass
 
   
-  def multiple_choice(self, n=1, question={}, sth=6.5):
+  def multiple_choice(self, sth=6.5, questions_mc=10):
+    self.sth = sth
+    
+    self.set_top_margin(19)
+    self.add_page() #page 1 of mc
+    
+    self.set_font("Times", "B", size=14)
+    self.cell(200, 15, txt="Section I", ln=1, align="L")
+    
+    
+    self.set_font("Times", "B", size=12)
+    self.cell(200, 5, txt=f"{questions_mc} marks", ln=1, align="L")
+    self.cell(200, 5, txt=f"Attempt Questions 1--{questions_mc}", ln=1, align="L")
+    self.cell(200, 5, txt="Allow about 15 minutes for this section", ln=1, align="L") #vary this
+    
+    self.set_font("Times", size=12)
+    self.cell(150, 15, txt=f"Use the multiple-choice answer sheet for Questions 1--{questions_mc}.", border="B", ln=1, align="L")
+  def sus1():
+    pass
+
+
+  def short_answer(self, sth=6.5, questions_mc=10, questions_sa=4, marks_sa=60):
+    self.sth = sth
+    
+    self.set_top_margin(19)
+    self.add_page() #page 1 of mc
+    
+    self.set_font("Times", "B", size=14)
+    self.cell(200, 15, txt="Section II", ln=1, align="L")
+    
+    
+    self.set_font("Times", "B", size=12)
+    self.cell(200, 5, txt=f"{marks_sa} marks", ln=1, align="L")
+    self.cell(200, 5, txt=f"Attempt Questions {questions_mc + 1}--{questions_mc + questions_sa}", ln=1, align="L")
+    self.cell(200, 5, txt="Allow about 15 minutes for this section", ln=1, align="L") #vary this too
+    
+    self.set_font("Times", size=12)
+    self.cell(150, 15, txt=f"Use the multiple-choice answer sheet for {questions_mc + 1}--{questions_mc + questions_sa}.", border="B", ln=1, align="L")
+
+
+  def DEP_multiple_choice(self, n=1, question={}, sth=6.5):
     print(f"mc q{n} starts here")
     self.sus = "amog us"
     self.cell(20, sth, txt="**1**", ln=0, align="L")
@@ -110,8 +137,5 @@ class PDF(FPDF):
     self.cell(None, sth, txt=f"B. {question['answer_b']}", ln=2, align="L")
     self.cell(None, sth, txt=f"C. {question['answer_c']}", ln=2, align="L")
     self.cell(None, sth, txt=f"D. {question['answer_d']}", ln=1, align="L")
-    
-    
-    
     
     self.ln(h=1) #fix height

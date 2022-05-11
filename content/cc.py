@@ -1,7 +1,7 @@
 from random import choice
 
 def choose_comb_question():
-  if choice([True, False]):
+  if choice([True, True]):
     from q_combs_circle import return_question
 
   else:
