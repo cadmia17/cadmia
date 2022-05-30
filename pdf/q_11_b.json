@@ -1,7 +1,7 @@
 {
   "type": "short_answer",
   "partite": true,
-  "count": 2,
+  "part_count": 2,
   "parts": {
     "1": {
       "question": "Why were you not doing task?",
@@ -12,3 +12,4 @@
       "answer": "No"
     }
   }
+}

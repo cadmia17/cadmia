@@ -10,7 +10,12 @@ def vprint(text): #basic verbosity printer
 
 
 def dot_product(v1, v2):
-  return v1[0]*v2[0] + v1[1]*v2[1]
+  if len(v1) == len(v2): #if same # of components
+    sum = 0
+    for i in range(0, len(v1)):
+      sum += v1[i]*v2[i]
+    return sum
+  return "among us jumpscare" #how do you write exceptions
 
 
 def sign(n):
@@ -100,9 +105,9 @@ def quad_formula(a, b, c):
     return [positive, negative]
   
   elif r == 0:
-    return [-b / 2*a]
+    return [-b / 2*a, -b / 2*a]
   
-  else:
+  else: #complex solution
     return []
 
 
@@ -165,11 +170,3 @@ def romanise(num): #converts to roman numerals from 1-10
     "10": "x",
   }
   return roman[str(num)]
-
-
-def get_multiple_choice(time): #multis given time
-  return math.ceil(time / 12)
-
-
-def get_short_marks(time): #marks of short section given time
-  return math.ceil(time / 12)

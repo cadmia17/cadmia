@@ -1,34 +1,38 @@
 import texit, json
+from settings import settings
+
+s = settings()
 
 pdf = texit.PDF()
-
-output_location = "output.pdf"
-
-#pdf.MARKDOWN_UNDERLINE_MARKER = "---"
-
-#pdf.set_left_margin(24)
-#pdf.set_top_margin(24)
-#pdf.set_draw_color(0) #black outline
-
-#pdf.add_page() #title page
+pen = "black"
+sth = 6.5
 
 
-sth = 6.5 #standard title [page] height
+output_location = "pdf/output.pdf"
 
 q_1_json = open("pdf/q_1.json")
 q_1 = json.load(q_1_json)
 
-pdf.title_page(pen="black")
+q_11_a_json = open("pdf/q_11_a.json")
+q_11_a = json.load(q_11_a_json)
+
+q_11_b_json = open("pdf/q_11_b.json")
+q_11_b = json.load(q_11_b_json)
 
 
-#pdf.set_left_margin(23)
 
-#pdf.multiple_choice(n=1, question=q1)
+pdf.title_page(pen=pen)
+pdf.multiple_choice(questions_mc=s["mc_time"])
+
 
 pdf.parse(q_1)
+pdf.parse(q_11_a)
+#pdf.parse(q_11_b)
 
 
 pdf.output(output_location)
+
+
 
 
 s = open("pdf/stats.txt")

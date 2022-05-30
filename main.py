@@ -3,6 +3,7 @@ from threading import Thread
 
 app = Flask("paper generator")
 @app.route("/")
+
 def cadmia_main():
   return render_template("index.html")
      
