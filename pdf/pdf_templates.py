@@ -71,7 +71,7 @@ class PDF(FPDF):
     
     
     self.set_font("Helvetica", "B", size=12)
-    self.cell(30, sth, txt="70", ln=0, align="L")
+    self.cell(30, sth, txt=s["marks"], ln=0, align="L")
     self.set_font("Helvetica", size=12)
     self.cell(30, sth, txt=f" * Attempt Questions 1-{s['mc_marks']}", ln=2, align="L") #ln=2 here!
     

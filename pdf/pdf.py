@@ -22,11 +22,12 @@ q_11_b = json.load(q_11_b_json)
 
 
 pdf.title_page(pen=pen)
-pdf.multiple_choice(questions_mc=s["mc_time"])
+pdf.multiple_choice(s=s)
+#pdf.multiple_choice(questions_mc=s["mc_time"])
 
 
 pdf.parse(q_1)
-pdf.parse(q_11_a)
+#pdf.parse(q_11_a)
 #pdf.parse(q_11_b)
 
 

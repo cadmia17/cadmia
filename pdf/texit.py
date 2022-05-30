@@ -17,6 +17,7 @@ class PDF(PDF):
 
         for v in val_list: #iterates for every text and formula
           print(f"~ v_mc = [{v}]")
+          print(f"w=30, h={self.sth}, txt=[{v}], new_x={XPos.END}, new_y={YPos.LAST}")
           if v[0] == "%": #formula
             v = v[1:] #removes leading % indicating formula
 
@@ -28,7 +29,6 @@ class PDF(PDF):
             #if the cell would >right side, multi_cell
             #else cell
             #todo
-            print(f"w=30, h={self.sth}, txt={v}, new_x={XPos.END}, new_y={YPos.LAST}")
   
             self.multi_cell(w=30, h=self.sth, txt=v, new_x=XPos.END, new_y=YPos.LAST)
 
