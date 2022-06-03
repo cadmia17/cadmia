@@ -7,8 +7,8 @@ pdf = texit.PDF()
 pen = "black"
 sth = 6.5
 
-
 output_location = "pdf/output.pdf"
+
 
 q_1_json = open("pdf/q_1.json")
 q_1 = json.load(q_1_json)

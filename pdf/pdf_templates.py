@@ -83,8 +83,8 @@ class PDF(FPDF):
     
     self.cell(30, sth, txt="", ln=0, align="L")
     self.cell(30, sth, txt=f"**Section II -- {s['sa_marks']} marks**", ln=2, align="L", markdown=True)
-    self.cell(30, sth, txt=f" * Attempt Questions {s['mc_marks'] + 1}-{s['marks']}", ln=2, align="L")
-    self.multi_cell(135, sth, txt=f" * Allow about {s['time']} minutes for this section", ln=2, align="L")
+    self.cell(30, sth, txt=f" * Attempt Questions {s['mc_marks'] + 1}-{s['qns']}", ln=2, align="L")
+    self.multi_cell(135, sth, txt=f" * Allow about {s['sa_time']} minutes for this section", ln=2, align="L")
   def sus0():
     pass
 
@@ -107,10 +107,13 @@ class PDF(FPDF):
     
     self.set_font("Times", size=12)
     self.cell(150, 15, txt=f"Use the multiple-choice answer sheet for Questions 1--{s['mc_marks']}.", border="B", ln=1, align="L")
+    self.ln(h=1)
   def sus1():
     pass
 
-  
+
+
+
 
   def short_answer(self, sth=6.5, s=set):
     self.sth = sth
@@ -124,8 +127,9 @@ class PDF(FPDF):
     
     self.set_font("Times", "B", size=12)
     self.cell(200, 5, txt=f"{s['sa_marks']} marks", ln=1, align="L")
-    self.cell(200, 5, txt=f"Attempt Questions {s['mc_marks'] + 1}-{s['marks']}", ln=1, align="L")
-    self.cell(200, 5, txt=f"Allow about {s['sa_time']} minutes for this section", ln=1, align="L") #vary this too
+    self.cell(200, 5, txt=f"Attempt Questions {s['mc_marks'] + 1}-{s['qns']}", ln=1, align="L")
+    self.cell(200, 5, txt=f"Allow about {s['sa_time']} minutes for this section", ln=1, align="L")
+    self.ln(h=1)
 
 
 

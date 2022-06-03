@@ -2,13 +2,50 @@ from urllib.parse import quote as encode
 from pdf_templates import PDF
 from fpdf import XPos, YPos
 
+
 def image_link(formula):
   base = "https://chart.googleapis.com/chart?cht=tx&chl="
   return base + encode(formula)
 
 ignore = ["type", "answer", "partite"]
 
+
 class PDF(PDF):
+  def parse_multiple_choice_2(self, dic, num=1):
+    start = self.get_x()
+    print(f"\n@ parsing question {num}")
+    
+    self.cell(w=5, h=self.sth, txt=f"{num}.", new_x=XPos.END, new_y=YPos.LAST) #creates 1) etc.
+
+    indent = self.get_x()
+    print(f"@ starting x-pos: {indent}")
+
+    #question
+    
+    val = dic["question"]
+    val_list = val.split("$") #splits into text, formula, text, etc
+    for v in val_list: #iterates for every text and formula
+      print(f"@ v_mc = [{v}]")
+      print(f"@ w=30, h={self.sth}, txt=[{v}], new_x={XPos.END}, new_y={YPos.LAST}")
+      if v[0] == "%": #formula
+        v = v[1:] #removes leading % indicating formula
+
+        self.image(image_link(v), alt_text=v) #gets the link to the image #then appends it to the pdf
+
+        print(f"x: {self.get_x()}, y: {self.get_y()}")
+
+      else: #normal text
+        #if the cell would >right side, multi_cell
+        #else cell
+        #todo
+
+        self.multi_cell(w=30, h=self.sth, txt=v, new_x=XPos.END, new_y=YPos.LAST)
+
+
+
+
+  
+  
   def parse_multiple_choice(self, dic):
     for key in dic.keys(): #question, ans a, ans b, etc
       if key not in ignore:
@@ -62,7 +99,7 @@ class PDF(PDF):
   def parse(self, dic):
     if dic["type"] == "multiple_choice":
       print("parser: mc")
-      self.parse_multiple_choice(dic)
+      self.parse_multiple_choice_2(dic)
 
     else:
       if dic["partite"] == False:
