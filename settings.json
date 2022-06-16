@@ -2,5 +2,6 @@
   "time": 80,
   "difficulty": 0.75,
   "blocklist": ["polynomials"],
+  "pen": "green",
   "extra_names": true
 }

@@ -4,7 +4,6 @@ from settings import settings
 s = settings()
 
 pdf = texit.PDF()
-pen = "black"
 sth = 6.5
 
 output_location = "pdf/output.pdf"
@@ -21,7 +20,7 @@ q_11_b = json.load(q_11_b_json)
 
 
 
-pdf.title_page(pen=pen)
+pdf.title_page()
 pdf.multiple_choice(s=s)
 #pdf.multiple_choice(questions_mc=s["mc_time"])
 

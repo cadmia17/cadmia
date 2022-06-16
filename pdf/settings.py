@@ -1,5 +1,5 @@
 import json, math
-from random import randint
+from random import randrange
 
 def get_mc(time): #multis given time
   return math.ceil(time / 12)
@@ -23,9 +23,10 @@ k = open("settings.json")
 settings = json.load(k)
 
 #time = settings["time"]
-time = randint(60, 120)
+time = randrange(60, 125, 5)
 difficulty = settings["difficulty"]
 blocklist = settings["blocklist"]
+pen = settings["pen"]
 #extra_names = settings["extra_names"]
 
 mc_marks = get_mc(time)
@@ -41,7 +42,8 @@ final_settings = {
   "sa_time": time - mc_marks,
   "sa_qns": get_sa_questions(sa_marks),
   "difficulty": difficulty,
-  "blocklist": blocklist
+  "blocklist": blocklist,
+  "pen": pen
 }
 
 def settings():

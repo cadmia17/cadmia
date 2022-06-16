@@ -9,7 +9,7 @@ class PDF(FPDF):
   def dummy(self, x, y):
     self.cell(x, y, txt="", ln=2)
   
-  def title_page(self, sth=6.5, year="2022", s=set, pen="black", logo="pdf/nsw_logo.png"):
+  def title_page(self, sth=6.5, year="2022", s=set, logo="pdf/nsw_logo.png"):
     self.MARKDOWN_UNDERLINE_MARKER = "---" #fixes weird mkdown bug
     self.sth = sth
     
@@ -27,7 +27,7 @@ class PDF(FPDF):
     self.ln(h=27)
     
     self.set_font("Helvetica", "B", size=15.5)
-    self.cell(w=14, h=7, txt=year, border=1, ln=0, align="C") #fix width
+    self.cell(w=14, h=7, txt=year, border=1, ln=0, align="C") #year
     
     self.set_font("Helvetica", "B", size=10.5)
     self.cell(200, 10, txt=" HIGHER SCHOOL CERTIFICATE EXAMINATION", ln=1, align="L")
@@ -50,7 +50,7 @@ class PDF(FPDF):
     self.cell(30, sth, txt=f" * Working time -- {s['time']} minutes", ln=2, align="L")
     
     
-    self.cell(30, sth, txt=f" * Write using {pen} pen", ln=2, align="L")
+    self.cell(30, sth, txt=f" * Write using {s['pen']} pen", ln=2, align="L")
     
     self.cell(30, sth, txt=" * Calculators approved by NESA may be used", ln=2, align="L")
     
