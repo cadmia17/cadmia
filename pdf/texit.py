@@ -2,7 +2,7 @@ from urllib.parse import quote as encode
 from pdf_templates import PDF
 from fpdf import XPos, YPos
 import shutil, requests
-
+from PIL import Image
 
 
 
@@ -41,19 +41,29 @@ class PDF(PDF):
     
     for v in val_list: #iterates for every text and formula
       image_counter = 0
-      key_short = str(num)
 
       if v[0] == "%": #formula
         print(f"\n\n@ value = [{v}], formula")
         v = v[1:] #removes leading % indicating formula
 
+        
+        x_formula = self.get_x()
+        y_formula = self.get_y()
 
-        full_path = f"pdf/_{key_short}_{image_counter}.png"
-        v = v[1:]
-        get_formula(v, full_path)
-        self.image(full_path, alt_text=v)
+
+        full_path = f"pdf/q{num}_{image_counter}.png"
+        get_formula(v, full_path) #creates the png
+
+        img = Image.open(full_path)
+        img_w, img_h = img.size
+        
+        self.image(img, alt_text=v)
 
         image_counter += 1
+
+
+        self.set_x(x_formula + img_w)
+        self.set_y(y_formula)
 
         #self.image(image_link(v), alt_text=v) #gets the link to the image #then appends it to the pdf
         #new_x=XPos.RIGHT, new_y=YPos.TOP
@@ -61,8 +71,7 @@ class PDF(PDF):
 
         print(f"x: {self.get_x()}, y: {self.get_y()}")
 
-        x_formula = self.get_x()
-        y_formula = self.get_y()
+        
 
       
       else: #normal text
@@ -71,14 +80,14 @@ class PDF(PDF):
         #else cell
         #todo
 
-        try:
-          self.set_x(x_formula)
-          print(f"@ set x to {x_formula}")
-          self.set_y(y_formula)
-          print(f"@ set y to {y_formula}")
+        #try:
+          #self.set_x(x_formula)
+          #print(f"@ set x to {x_formula}")
+          #self.set_y(y_formula)
+          #print(f"@ set y to {y_formula}")
           
-        except:
-          pass
+        #except:
+          #pass
 
         self.multi_cell(w=0, h=self.sth, txt=v, new_x=(XPos.END), new_y=(YPos.LAST))
 
