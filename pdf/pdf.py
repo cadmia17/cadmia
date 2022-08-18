@@ -3,6 +3,14 @@ from settings import settings
 
 s = settings()
 
+#Algorithm use
+
+algo.generate_mc(s["mc_marks"])
+
+#PDF generation
+
+
+
 pdf = texit.PDF()
 sth = 6.5
 

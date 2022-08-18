@@ -25,75 +25,74 @@ ignore = ["type", "answer", "partite"]
 class PDF(PDF):
   def parse_parser(self, val, indent):
     MAGIC_NUMBER = 11 / 32
-    
-    val_list = val.split("$") #splits into text, formula, text, etc
 
+    print(val)
+    val_list = val.split("$") #splits into text, formula, text, etcc
     
     for v in val_list: #iterates for every text and formula
       image_counter = 0
 
-      if v[0] == "%": #formula
-        #print(f"\n\n@ value = [{v}], formula")
-        v = v[1:] #removes leading % indicating formula
-
-        
-        x_formula = self.get_x()
-        y_formula = self.get_y()
-        #print(f"x: {self.get_x()}, y: {self.get_y()}")
-
-
-        full_path = f"pdf/_image.png"
-        get_formula(v, full_path) #creates the png
-
-        img = Image.open(full_path)
-        img_w, img_h = img.size
-        #print(f"img_w: {img_w}, img_h: {img_h}")
-        
-        self.image(img, alt_text=v)
-        #print(f"x: {self.get_x()}, y: {self.get_y()}") #
-
-        image_counter += 1
-
-        fixed_img_w = (img_w * MAGIC_NUMBER) #magic number, sorry
-        fixed_img_h = (img_h * MAGIC_NUMBER)
-
-        new_x = x_formula + fixed_img_w
-        #print(f"x before img ({x_formula}) + fixed img's width ({fixed_img_w}) = new x ({new_x})")
-        self.set_xy(new_x, y_formula)
-        
-        #print(f"x: {self.get_x()}, y: {self.get_y()}")
-
-        #self.image(image_link(v), alt_text=v) #gets the link to the image #then appends it to the pdf
-        #new_x=XPos.RIGHT, new_y=YPos.TOP
-        #which means, add the width of the image and subtract the height
-        
-
-      
-      else: #normal text
-        #print(f"\n\n@ value = [{v}], text")
-        #if the cell would >right side, multi_cell
-        #else cell
-        #todo
-
-        #try:
-          #self.set_x(x_formula)
-          #print(f"@ set x to {x_formula}")
-          #self.set_y(y_formula)
-          #print(f"@ set y to {y_formula}")
+      if len(v) > 0:
+        if v[0] == "%": #formula
+          #print(f"\n\n@ value = [{v}], formula")
+          v = v[1:] #removes leading % indicating formula
           
-        #except:
-          #pass
-
-        try:
-          self.multi_cell(w=0, h=self.sth, txt=v, new_x=(XPos.END), new_y=(YPos.LAST))
-        except:
-          #print("@ returning to lowest indentation level")
-          self.set_x(indent)
-
-          new_y = y_formula + fixed_img_h
-          self.set_y(new_y)
+          x_formula = self.get_x()
+          y_formula = self.get_y()
+          #print(f"x: {self.get_x()}, y: {self.get_y()}")
+  
+          full_path = f"pdf/_image.png"
+          get_formula(v, full_path) #creates the png
+  
+          img = Image.open(full_path)
+          img_w, img_h = img.size
+          #print(f"img_w: {img_w}, img_h: {img_h}")
           
-          self.multi_cell(w=0, h=self.sth, txt=v, new_x=(XPos.END), new_y=(YPos.LAST))
+          self.image(img, alt_text=v)
+          #print(f"x: {self.get_x()}, y: {self.get_y()}") #
+  
+          image_counter += 1
+  
+          fixed_img_w = (img_w * MAGIC_NUMBER) #magic number, sorry
+          fixed_img_h = (img_h * MAGIC_NUMBER)
+  
+          new_x = x_formula + fixed_img_w
+          #print(f"x before img ({x_formula}) + fixed img's width ({fixed_img_w}) = new x ({new_x})")
+          self.set_xy(new_x, y_formula)
+          
+          #print(f"x: {self.get_x()}, y: {self.get_y()}")
+  
+          #self.image(image_link(v), alt_text=v) #gets the link to the image #then appends it to the pdf
+          #new_x=XPos.RIGHT, new_y=YPos.TOP
+          #which means, add the width of the image and subtract the height
+          
+  
+        
+        else: #normal text
+          #print(f"\n\n@ value = [{v}], text")
+          #if the cell would >right side, multi_cell
+          #else cell
+          #todo
+  
+          #try:
+            #self.set_x(x_formula)
+            #print(f"@ set x to {x_formula}")
+            #self.set_y(y_formula)
+            #print(f"@ set y to {y_formula}")
+            
+          #except:
+            #pass
+  
+          try:
+            self.multi_cell(w=0, h=self.sth, txt=v, new_x=(XPos.END), new_y=(YPos.LAST))
+          except:
+            #print("@ returning to lowest indentation level")
+            self.set_x(indent)
+  
+            new_y = y_formula + fixed_img_h
+            self.set_y(new_y)
+            
+            self.multi_cell(w=0, h=self.sth, txt=v, new_x=(XPos.END), new_y=(YPos.LAST))
 
 
 
@@ -103,10 +102,6 @@ class PDF(PDF):
     mc_answers = ["answer_a", "answer_b", "answer_c", "answer_d"]
     
     start = self.get_x()
-
-
-    #print(f"\n@ parsing question {num}")
-    
 
     self.cell(w=25, h=self.sth, txt=f"**{num}.**", new_x=XPos.END, new_y=YPos.LAST, markdown=True) #creates 1) etc.
 
@@ -135,6 +130,7 @@ class PDF(PDF):
       self.set_x(self.get_x() + 6)
 
       val = dic[answer]
+      print(f"{answer}: {val}")
 
       self.parse_parser(val, indent)
       
@@ -199,7 +195,7 @@ class PDF(PDF):
   
   def parse(self, dic, num):
     if dic["type"] == "multiple_choice":
-      print("parser: mc")
+      print(f"parser: mc #{num}")
       self.parse_multiple_choice_2(dic, num)
 
     else:
