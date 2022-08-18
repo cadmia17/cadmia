@@ -1,5 +1,5 @@
 {
-  "time": 80,
+  "time": 120,
   "difficulty": 0.75,
   "blocklist": ["polynomials"],
   "pen": "green",

@@ -12,6 +12,7 @@ class PDF(FPDF):
   def title_page(self, sth=6.5, year="2022", s=set, logo="pdf/nsw_logo.png"):
     self.MARKDOWN_UNDERLINE_MARKER = "---" #fixes weird mkdown bug
     self.sth = sth
+    self.DASH = "--" #en soon hopefully
     
     self.set_left_margin(24)
     self.set_top_margin(24)
@@ -41,13 +42,13 @@ class PDF(FPDF):
     self.set_font("Helvetica", "B", size=12)
     self.cell(30, sth, txt="General", ln=0, align="L", border="T")
     self.set_font("Helvetica", size=12)
-    self.cell(30, sth, txt=f" * Reading time -- {s['mc_time']} minutes", ln=1, align="L")
+    self.cell(30, sth, txt=f" * Reading time {self.DASH} {s['mc_time']} minutes", ln=1, align="L")
     
     
     self.set_font("Helvetica", "B", size=12)
     self.cell(30, sth, txt="Instructions", ln=0, align="L")
     self.set_font("Helvetica", size=12)
-    self.cell(30, sth, txt=f" * Working time -- {s['time']} minutes", ln=2, align="L")
+    self.cell(30, sth, txt=f" * Working time {self.DASH} {s['time']} minutes", ln=2, align="L")
     
     
     self.cell(30, sth, txt=f" * Write using {s['pen']} pen", ln=2, align="L")
@@ -67,7 +68,7 @@ class PDF(FPDF):
     self.set_font("Helvetica", "B", size=12)
     self.cell(30, sth, txt="Total marks:", ln=0, align="L", border="T")
     self.set_font("Helvetica", size=12)
-    self.cell(30, sth, txt=f"**Section I -- {s['mc_marks']} marks**", ln=1, align="L", markdown=True)
+    self.cell(30, sth, txt=f"**Section I {self.DASH} {s['mc_marks']} marks**", ln=1, align="L", markdown=True)
     
     
     self.set_font("Helvetica", "B", size=12)
@@ -82,7 +83,7 @@ class PDF(FPDF):
     
     
     self.cell(30, sth, txt="", ln=0, align="L")
-    self.cell(30, sth, txt=f"**Section II -- {s['sa_marks']} marks**", ln=2, align="L", markdown=True)
+    self.cell(30, sth, txt=f"**Section II {self.DASH} {s['sa_marks']} marks**", ln=2, align="L", markdown=True)
     self.cell(30, sth, txt=f" * Attempt Questions {s['mc_marks'] + 1}-{s['qns']}", ln=2, align="L")
     self.multi_cell(135, sth, txt=f" * Allow about {s['sa_time']} minutes for this section", ln=2, align="L")
   def sus0():
@@ -102,11 +103,11 @@ class PDF(FPDF):
     
     self.set_font("Times", "B", size=12)
     self.cell(200, 5, txt=f"{s['mc_marks']} marks", ln=1, align="L")
-    self.cell(200, 5, txt=f"Attempt Questions 1--{s['mc_marks']}", ln=1, align="L")
+    self.cell(200, 5, txt=f"Attempt Questions 1{self.DASH}{s['mc_marks']}", ln=1, align="L")
     self.cell(200, 5, txt=f"Allow about {s['mc_time']} minutes for this section", ln=1, align="L") #vary this
     
     self.set_font("Times", size=12)
-    self.cell(150, 15, txt=f"Use the multiple-choice answer sheet for Questions 1--{s['mc_marks']}.", border="B", ln=1, align="L")
+    self.cell(150, 15, txt=f"Use the multiple-choice answer sheet for Questions 1{self.DASH}{s['mc_marks']}.", border="B", ln=1, align="L")
     self.ln(h=1)
   def sus1():
     pass

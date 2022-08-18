@@ -16,7 +16,7 @@ def generator(n=[-4, 4]):
   }
 
 def create_question(a, b, c1, c2, n):
-  return f"For what values of n are (n, {c1}) and ({a}n + {b}, {c2}) perpendicular?"
+  return f"For what values of n are $%(n, {c1})$ and $%({a}n + {b}, {c2})$ perpendicular?"
 
 def return_question():
   dict_ints = generator()
