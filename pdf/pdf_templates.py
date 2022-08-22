@@ -4,7 +4,7 @@ from settings import settings
 
 class PDF(FPDF):
   set = settings()
-  print(set)
+  #print(set)
 
   def dummy(self, x, y):
     self.cell(x, y, txt="", ln=2)

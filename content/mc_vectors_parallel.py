@@ -26,7 +26,7 @@ def generator(n=[-4, 4], a=[-4, 4], b=[-4, 4], c=[-4, 4], d=[-4, 4], p=[-4, 4], 
     return generator()
 
 def create_question(a, b, c, d, p, q):
-  return f"For what values of n are ({ext_math.lead(a)}n {ext_math.const(b)}, {p}) and ({q}, {ext_math.lead(c)}n {ext_math.const(d)}) parallel?"
+  return f"For what values of n are ({ext_math.lead(a)}n {ext_math.const(b)}, {p}) and ({ext_math.lead(c)}n {ext_math.const(d)}, {q}) parallel?"
 
 def return_question():
   dict_ints = generator()

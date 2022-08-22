@@ -26,7 +26,6 @@ class PDF(PDF):
   def parse_parser(self, val, indent):
     MAGIC_NUMBER = 11 / 32
 
-    print(val)
     val_list = val.split("$") #splits into text, formula, text, etcc
     
     for v in val_list: #iterates for every text and formula
@@ -130,7 +129,7 @@ class PDF(PDF):
       self.set_x(self.get_x() + 6)
 
       val = dic[answer]
-      print(f"{answer}: {val}")
+      #print(f"{answer}: {val}")
 
       self.parse_parser(val, indent)
       
@@ -150,14 +149,14 @@ class PDF(PDF):
         val_list = val.split("$") #splits into text, formula, text, etc.
 
         for v in val_list: #iterates for every text and formula
-          print(f"~ v_mc = [{v}]")
-          print(f"w=30, h={self.sth}, txt=[{v}], new_x={XPos.END}, new_y={YPos.LAST}")
+          #print(f"~ v_mc = [{v}]")
+          #print(f"w=30, h={self.sth}, txt=[{v}], new_x={XPos.END}, new_y={YPos.LAST}")
           if v[0] == "%": #formula
             v = v[1:] #removes leading % indicating formula
 
             self.image(image_link(v), alt_text=v) #gets the link to the image #then appends it to the pdf
 
-            print(f"x: {self.get_x()}, y: {self.get_y()}")
+            #print(f"x: {self.get_x()}, y: {self.get_y()}")
 
           else: #normal text
             #if the cell would >right side, multi_cell
@@ -195,7 +194,7 @@ class PDF(PDF):
   
   def parse(self, dic, num):
     if dic["type"] == "multiple_choice":
-      print(f"parser: mc #{num}")
+      #print(f"parser: mc #{num}")
       self.parse_multiple_choice_2(dic, num)
 
     else:

@@ -1,5 +1,8 @@
 import texit, json, algo
 from settings import settings
+from time import time
+
+start = time()
 
 s = settings()
 
@@ -23,7 +26,6 @@ output_location = "pdf/output.pdf"
 #q_11_b = json.load(q_11_b_json)
 
 
-
 pdf.title_page()
 pdf.multiple_choice(s=s)
 
@@ -37,9 +39,17 @@ for mc in range(1, s["mc_marks"] + 1):
 #pdf.parse(q_11_b)
 
 
+
+
+
+
+
+
 pdf.output(output_location)
 
 
+end = time()
+print(f"time taken: {round(end - start, 3)}s")
 
 
 s = open("pdf/stats.txt")
@@ -49,11 +59,13 @@ for line in s:
   k = int(end[-1].strip())
 s.close()
 
+final_message = f"pdfs generated: {k + 1}"
+
 s = open("pdf/stats.txt", "w")
-s.write(f"pdfs generated: {k + 1}")
+s.write(final_message)
 s.close()
 
-
+print(final_message)
 
 
 #todo: clean up files that start with _

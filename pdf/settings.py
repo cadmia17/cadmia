@@ -1,16 +1,17 @@
-import json, math
+import json
+from math import ceil
 from random import randrange
 
 def get_mc(time): #multis given time
-  return math.ceil(time / 12)
+  return ceil(time / 12)
 
 
 def get_sa_marks(time): #marks of short section given time
-  return math.ceil(time / 2)
+  return ceil(time / 2)
 
 
 def get_sa_questions(marks): #questions given marks
-  if marks < 32:
+  if marks < 32: #hardcoded, really not sorry tbh
     return 2
   elif marks < 52:
     return 3
