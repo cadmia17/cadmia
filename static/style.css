@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Nova+Slim|Lato|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
 html{font-family: "Lato", cursive;}
 
 header {
@@ -33,25 +33,46 @@ nav>a:hover {
   margin: 0 auto;
 }
 
+#para-right {
+  position: absolute;
+  left: 52.5%;
+  top: 250px;
+  width: 22.5%;
+
+  display: flex;
+  justify-content: left;
+  margin: 0 auto;
+}
+
 #intro-2 {
+  position: absolute;
+  left: 52.5%;
+  top: 250px;
+  width: 22.5%;
+  
   display: flex;
-  justify-content: center;
+  justify-content: left;
   margin: 0 auto;
 }
 
-#intro-3 {
+#intro-4 {
+  left: 52.5%;
+  width: 22.5%;
+  
   display: flex;
-  justify-content: center;
+  justify-content: left;
   margin: 0 auto;
 }
 
-table, th, td{
-  border:1px solid black;
+table, th, td {
+  border: 1px solid black;
   border-collapse: collapse;
-  padding:16px;
+  padding: 16px;
 }
 
-table{margin:24px auto;}
+table {
+  margin: 24px auto;
+}
 
 #use-button {
   width: 40px;
@@ -61,4 +82,88 @@ table{margin:24px auto;}
   margin: 0 auto;
   color: white;
   background: #e94157;
+}
+
+
+
+
+
+
+
+
+
+
+
+#bigass-form {
+  background: #dddddd;
+
+  position: absolute;
+  left: 25%;
+  top: 175px;
+  width: 50%;
+  justify-content: center;
+}
+
+#slidecontainer {
+  left: 81.25%;
+  top: 50px;
+  width: 18.75%;
+  justify-content: center;
+  margin: auto;
+}
+
+#topic-list {
+  background: #c8c8c8;
+
+  left: 50%;
+  top: 50px;
+  width: 80%;
+  justify-content: center;
+  margin: auto;
+}
+
+
+input[type=submit] {
+  width: auto;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  color: white;
+  background: #e94157;
+  font-family: "Lato", cursive;
+  border: 0;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  color: rgb(255, 178, 191);
+}
+
+
+.slider {
+  -webkit-appearance: none;
+  background: #c8c8c8;
+  outline: none;
+  opacity: 1;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #e94157;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #e94157;
+  cursor: pointer;
 }

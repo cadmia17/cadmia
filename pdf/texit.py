@@ -1,5 +1,5 @@
 from urllib.parse import quote as encode
-from pdf_templates import PDF
+from pdf.pdf_templates import PDF
 from fpdf import XPos, YPos
 import shutil, requests
 from PIL import Image

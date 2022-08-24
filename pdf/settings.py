@@ -1,6 +1,4 @@
-import json
 from math import ceil
-from random import randrange
 
 def get_mc(time): #multis given time
   return ceil(time / 12)
@@ -20,34 +18,20 @@ def get_sa_questions(marks): #questions given marks
   return 5
 
 
-k = open("settings.json")
-settings = json.load(k)
-
-#time = settings["time"]
-time = randrange(60, 125, 5)
-difficulty = settings["difficulty"]
-blocklist = settings["blocklist"]
-pen = settings["pen"]
-#extra_names = settings["extra_names"]
-
-mc_marks = get_mc(time)
-sa_marks = get_sa_marks(time)
-
-final_settings = {
-  "marks": mc_marks + sa_marks,
-  "time": time,
-  "qns": get_sa_questions(sa_marks) + mc_marks,
-  "mc_marks": mc_marks,
-  "mc_time": mc_marks,
-  "sa_marks": sa_marks,
-  "sa_time": time - mc_marks,
-  "sa_qns": get_sa_questions(sa_marks),
-  "difficulty": difficulty,
-  "blocklist": blocklist,
-  "pen": pen
-}
-
-def settings():
-  return final_settings
+def settings(time=120, difficulty=1.0, blocklist=[], pen="black"):
+  return {
+    "marks": get_mc(time) + get_sa_marks(time),
+    "time": time,
+    "qns": get_sa_questions(get_sa_marks(time)) + get_mc(time),
+    "mc_marks": get_mc(time),
+    "mc_time": get_mc(time),
+    "sa_marks": get_sa_marks(time),
+    "sa_time": time - get_mc(time),
+    "sa_qns": get_sa_questions(get_sa_marks(time)),
+    "difficulty": difficulty,
+    "blocklist": blocklist,
+    "pen": pen
+  }
 
 #cry
+#22/8: not sure when the above comment was made but it fits

@@ -48,6 +48,6 @@ def generate_sa(s): #takes settings config as input
   pass
 
 
-from settings import settings
+from pdf.settings import settings
 s = settings()
 assign_sa_marks(s=s)

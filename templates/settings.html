@@ -11,15 +11,62 @@
 <header>
   <h1>✧･ﾟ: *✧･ﾟ:* settings *:･ﾟ*✧:･ﾟ✧</h1>
   <nav>
-      <a href="/guide/">guide</a>
-      <a>status: online</a>
-      <a href="https://discord.gg/ptCGsGBJCQ">support</a>
+    <a href="/guide/">guide</a>
+    <a href="/">home</a>
+    <a href="https://discord.gg/ptCGsGBJCQ">support</a>
   </nav>
 </header>
 
 <body>
 
-  
-</body>
 
+<form id="bigass-form" action="/pdf/" method="get">
+
+<div id="slidecontainer">
+  <div id="time-speaker" class="hfa">time: <span id="time-out"></span> minutes</div>
+  <input type="range" min="60" max="120" value="120" class="slider" id="time-slider" name="time" />
+  <div id="difficulty-speaker" class="hfa">difficulty: <span id="difficulty-out"></span>%</div>
+  <input type="range" min="1" max="100" value="50" class="slider" id="difficulty-slider" name="difficulty" />
+</div>
+  
+<div id="topic-list">
+  <input type="checkbox" id="t1" name="t1" value="vectors" checked=true>
+  <label for="t1"> vectors</label>
+  <br>
+  <input type="checkbox" id="t2" name="t2" value="polynomials" checked=true>
+  <label for="t2"> polynomials</label>
+  <br>
+  <input type="checkbox" id="t3" name="t3" value="combinatorics" checked=true>
+  <label for="t3"> combinatorics</label>
+</div>
+
+
+  
+</div>
+
+
+<input type="submit" name="submit-form" id="submit-button" value="generate!" style="font-size:16px">
+
+</form>
+
+
+<script>
+var tslider = document.getElementById("time-slider");
+var toutput = document.getElementById("time-out"); /*ha ha*/
+toutput.innerHTML = tslider.value;
+
+tslider.oninput = function() {
+  toutput.innerHTML = this.value;
+}
+
+var dslider = document.getElementById("difficulty-slider");
+var doutput = document.getElementById("difficulty-out"); /*ha ha*/
+doutput.innerHTML = dslider.value;
+
+dslider.oninput = function() {
+  doutput.innerHTML = this.value;
+}
+</script>
+
+</body>
 </html>

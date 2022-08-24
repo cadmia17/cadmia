@@ -1,5 +1,5 @@
 from fpdf import FPDF
-from settings import settings
+from pdf.settings import settings
 
 
 class PDF(FPDF):

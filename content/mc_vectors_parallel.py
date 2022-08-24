@@ -1,4 +1,5 @@
-import ext_math, random
+import content.ext_math as ext_math
+import random
 
 def generator(n=[-4, 4], a=[-4, 4], b=[-4, 4], c=[-4, 4], d=[-4, 4], p=[-4, 4], q=[-4, 4]):
   n = ext_math.rand(n, blacklist=[0])
