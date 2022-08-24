@@ -19,6 +19,7 @@ def get_sa_questions(marks): #questions given marks
 
 
 def settings(time=120, difficulty=1.0, blocklist=[], pen="black"):
+  print(f"3set time={time}")
   return {
     "marks": get_mc(time) + get_sa_marks(time),
     "time": time,

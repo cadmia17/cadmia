@@ -13,6 +13,7 @@ class PDF(FPDF):
     self.MARKDOWN_UNDERLINE_MARKER = "---" #fixes weird mkdown bug
     self.sth = sth
     self.DASH = "--" #en soon hopefully
+    print(f"5temp time={s['time']}")
     
     self.set_left_margin(24)
     self.set_top_margin(24)

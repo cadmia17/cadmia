@@ -23,7 +23,9 @@ def increment_pdf_counter():
 
 
 def pdf(time=120, difficulty=1.0, blocklist=[], pen="black", output="pdf/output.pdf"):
-  s = settings(time=120, difficulty=1.0, blocklist=[], pen="black")
+  print(f"2pdf time={time}")
+  s = settings(time=int(time), difficulty=float(difficulty), blocklist=blocklist, pen=pen)
+  print(f"4pdf time={s['time']}")
   
   #Algorithm use
   
@@ -36,7 +38,7 @@ def pdf(time=120, difficulty=1.0, blocklist=[], pen="black", output="pdf/output.
   
   
   #Generates title page
-  pdf.title_page()
+  pdf.title_page(s=s)
 
 
   
