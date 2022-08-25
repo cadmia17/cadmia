@@ -1,10 +1,14 @@
 from flask import Flask, render_template, request, redirect, send_from_directory
 from threading import Thread
 from pdf.pdf import pdf
+from pdf.algo import omct as topics
 import os
 
 UPLOAD_FOLDER = '/uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+TOPIC_LIST = topics()
+NUMBER_OF_TOPICS = len(TOPIC_LIST)
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -38,11 +42,25 @@ def cadmia_pdf():
   time = request.args.get("time")
   print(f"1main time={time}")
   difficulty = int(request.args.get("difficulty")) / 100
-  #t1 = request.args.get("t1")
-  #t2 = request.args.get("t2")
-  #t3 = request.args.get("t3")
 
-  pdf(time=time, difficulty=difficulty, blocklist=[], output="uploads/pdf.pdf")
+  permitted_topics = []
+
+  for check_topic in range(0, NUMBER_OF_TOPICS):
+    print(f"\n\n&&{NUMBER_OF_TOPICS}")
+    print(check_topic)
+    if request.args.get(f"t{check_topic}") is not None:
+      permitted_topics.append(TOPIC_LIST[check_topic])
+      print(f"{permitted_topics}")
+
+  blocked_topics = []
+  
+  for topic in TOPIC_LIST:
+    if topic not in permitted_topics:
+      blocked_topics.append(topic)
+
+  
+
+  pdf(time=time, difficulty=difficulty, blocklist=blocked_topics, output="uploads/pdf.pdf")
   
   print(os.getcwd())
   print([f for f in os.listdir(".") if os.path.isfile(f)])

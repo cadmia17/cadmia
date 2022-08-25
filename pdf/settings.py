@@ -23,8 +23,8 @@ def settings(time=120, difficulty=1.0, blocklist=[], pen="black"):
 
   if time >= 300:
     time = 300
-  elif time <= 0:
-    time = 0
+  elif time <= 30:
+    time = 30
 
   
   print(f"3set time={time}")

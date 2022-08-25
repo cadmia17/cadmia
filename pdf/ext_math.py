@@ -19,7 +19,7 @@ def dot_product(v1, v2):
 
 
 def sign(n):
-  if n > 0:
+  if n >= 0:
     return "+"
   else:
     return "-"

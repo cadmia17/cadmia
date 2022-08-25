@@ -3,7 +3,15 @@ from random import choice
 import json
 
 sa_topics = ["q_polys", "q_vectors_parallel", "q_vectors_perpendicular", "mc_vectors_parallel"]
-mc_topics = ["mc_vectors_parallel"]
+
+original_mct = {
+  "vectors": ["mc_vectors_parallel"],
+  "polys": ["mc_polys"],
+  "combs": ["mc_combs"]
+}
+
+def omct():
+  return list(original_mct.keys())
 
 def load_mod(mod, q):
   file = mod
@@ -21,10 +29,19 @@ def load_mod(mod, q):
     json.dump(question_dict, o)
 
 
-def generate_mc(num):
+
+
+def generate_mc(num, blocklist=[]):
+  mc_topics = original_mct
+
+  for topic in blocklist:
+    mc_topics.pop(topic)
+  
   for q in range(1, num + 1):
-    random_topic = choice(mc_topics)
-    load_mod(random_topic, q)
+    topic_keys = list(mc_topics.keys())
+    random_topic = choice(topic_keys)
+    random_subtopic = choice(mc_topics[random_topic])
+    load_mod(random_subtopic, q)
 
 
 def assign_sa_marks(s):

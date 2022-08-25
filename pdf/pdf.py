@@ -29,7 +29,7 @@ def pdf(time=120, difficulty=1.0, blocklist=[], pen="black", output="pdf/output.
   
   #Algorithm use
   
-  algo.generate_mc(s["mc_marks"])
+  algo.generate_mc(s["mc_marks"], blocklist=blocklist)
   #algo.generate_sa(s["sa_marks"])
   
   #PDF generation
