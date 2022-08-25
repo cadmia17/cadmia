@@ -19,6 +19,14 @@ def get_sa_questions(marks): #questions given marks
 
 
 def settings(time=120, difficulty=1.0, blocklist=[], pen="black"):
+  time = ceil(time)
+
+  if time >= 300:
+    time = 300
+  elif time <= 0:
+    time = 0
+
+  
   print(f"3set time={time}")
   return {
     "marks": get_mc(time) + get_sa_marks(time),
@@ -36,3 +44,4 @@ def settings(time=120, difficulty=1.0, blocklist=[], pen="black"):
 
 #cry
 #22/8: not sure when the above comment was made but it fits
+#25/8: lmao

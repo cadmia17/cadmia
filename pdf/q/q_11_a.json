@@ -1,6 +1,0 @@
-{
-  "type": "short_answer",
-  "partite": false,
-  "question": "Given that $%p = (1, 0)$ and $%q = (0, 3)$, evaluate $%p*q$.",
-  "answer": "%-3"
-}

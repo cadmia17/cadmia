@@ -1,8 +1,14 @@
-from flask import Flask, render_template, request, redirect, send_file, send_from_directory
+from flask import Flask, render_template, request, redirect, send_from_directory
 from threading import Thread
 from pdf.pdf import pdf
-from time import sleep
 import os
+
+UPLOAD_FOLDER = '/uploads'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+app = Flask(__name__)
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+print()
 
 app = Flask("paper generator")
 
@@ -36,30 +42,23 @@ def cadmia_pdf():
   #t2 = request.args.get("t2")
   #t3 = request.args.get("t3")
 
-  pdf(time=time, difficulty=difficulty, blocklist=[], output="pdf.pdf")
+  pdf(time=time, difficulty=difficulty, blocklist=[], output="uploads/pdf.pdf")
   
   print(os.getcwd())
   print([f for f in os.listdir(".") if os.path.isfile(f)])
 
 
-  return redirect("/pdf.pdf")
+  return redirect("/uploads/pdf.pdf")
 
 
 
 
-@app.route("/pdf2/")
-def cadmia_pdf2():
-  print("@pdf2")
-  print(os.getcwd())
-  print([f for f in os.listdir('.') if os.path.isfile(f)])
-  sleep(2) #PLEASE
-  with open("output/pdf.pdf", "rb") as static_file:
-    return send_file(static_file, filename="output.pdf")
 
-@app.route("/pdf3/")
-def cadmia_pdf3():
-  sleep(2) #PLEASE
-  return send_from_directory(app.config[""], "pdf.pdf", as_attachment=True)
+@app.route('/<foldername>/<path:filename>')
+def uploaded_file(foldername, filename):
+    return send_from_directory(foldername, filename)
+
+
 
 
 def start_server():
