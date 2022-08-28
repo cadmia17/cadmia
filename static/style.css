@@ -33,32 +33,26 @@ nav>a:hover {
   margin: 0 auto;
 }
 
+#intro-2 {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 60%
+}
+
+#intro-3 {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 60%
+}
+
 #para-right {
   position: absolute;
   left: 52.5%;
   top: 250px;
   width: 22.5%;
 
-  display: flex;
-  justify-content: left;
-  margin: 0 auto;
-}
-
-#intro-2 {
-  position: absolute;
-  left: 52.5%;
-  top: 250px;
-  width: 22.5%;
-  
-  display: flex;
-  justify-content: left;
-  margin: 0 auto;
-}
-
-#intro-4 {
-  left: 52.5%;
-  width: 22.5%;
-  
   display: flex;
   justify-content: left;
   margin: 0 auto;

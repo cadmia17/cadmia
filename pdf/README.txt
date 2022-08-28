@@ -33,3 +33,32 @@ A module which hooks onto the pdf_templates module to allow for parsing of formu
 
 Unused files:
 * algo_legacy.py
+
+
+Reference manual:
+* assign_sa_marks(): algo
+* dummy(): pdf_templates
+* coeff(): ext_math
+* const(): ext_math
+* generate_mc(): algo
+* generate_sa(): algo
+* get_mc(): settings
+* get_sa_marks(): settings
+* get_sa_questions(): settings
+* increment_pdf_counter(): pdf
+* lead(): ext_math
+* load_mod(): algo
+* multiple_choice(): pdf_templates
+* name(): ext_math
+* omct(): algo
+* pdf(): pdf
+* quad_formula(): ext_math
+* rand(): ext_math
+* real(): ext_math
+* romanise(): ext_math
+* settings(): settings
+* short_answer(): pdf_templates
+* sign(): ext_math
+* ss(): ext_math
+* title_page(): pdf_templates
+* vprint(): ext_math

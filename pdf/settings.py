@@ -45,3 +45,4 @@ def settings(time=120, difficulty=1.0, blocklist=[], pen="black"):
 #cry
 #22/8: not sure when the above comment was made but it fits
 #25/8: lmao
+#27/8: checked the commit history and it was somewhere between 11/5 and 30/5

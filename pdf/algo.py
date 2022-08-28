@@ -32,7 +32,10 @@ def load_mod(mod, q):
 
 
 def generate_mc(num, blocklist=[]):
-  mc_topics = original_mct
+  mc_topics = {}
+  
+  for k in original_mct:
+    mc_topics[k] = original_mct[k]
 
   for topic in blocklist:
     mc_topics.pop(topic)
