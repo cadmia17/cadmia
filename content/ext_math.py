@@ -170,3 +170,14 @@ def romanise(num): #converts to roman numerals from 1-10
     "10": "x",
   }
   return roman[str(num)]
+
+def num_to_let(num): #converts numbers to letters
+  let = {
+    "1": "A",
+    "2": "B",
+    "3": "C",
+    "4": "D",
+    "5": "E",
+    "6": "F",
+  }
+  return let[str(num)]

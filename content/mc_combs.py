@@ -41,10 +41,17 @@ def return_question():
 
   answers = [dict_ints["p"], dict_ints["q"], dict_ints["r"], dict_ints["s"]]
 
+  sol_letter = ""
+
+  #get letter of answer
+  for a in range(0, len(answers)):
+    if solution == a:
+      sol_letter = ext_math.num_to_let(a)
+
   question_dic = {
     "type": "multiple_choice",
     "question": str(question),
-    "answer": str(solution),
+    "answer": str(sol_letter),
     "answer_a": str(answers[0]),
     "answer_b": str(answers[1]),
     "answer_c": str(answers[2]),

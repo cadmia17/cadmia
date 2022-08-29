@@ -43,10 +43,18 @@ def return_question():
 
   answers.sort()
 
+  
+  sol_letter = "B"
+
+  #get letter of answer
+  for a in range(0, len(answers)):
+    if solution == a:
+      sol_letter = ext_math.num_to_let(a)
+
   question_dic = {
     "type": "multiple_choice",
     "question": question,
-    "answer": solution,
+    "answer": sol_letter,
     "answer_a": answers[0],
     "answer_b": answers[1],
     "answer_c": answers[2],

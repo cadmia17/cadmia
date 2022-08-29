@@ -28,6 +28,8 @@ def load_mod(mod, q):
   with open(output, "w") as o:
     json.dump(question_dict, o)
 
+  return str(question_dict["answer"])
+
 
 
 
@@ -39,12 +41,25 @@ def generate_mc(num, blocklist=[]):
 
   for topic in blocklist:
     mc_topics.pop(topic)
+
+  dic_of_answers = {}
   
   for q in range(1, num + 1):
     topic_keys = list(mc_topics.keys())
     random_topic = choice(topic_keys)
     random_subtopic = choice(mc_topics[random_topic])
-    load_mod(random_subtopic, q)
+    
+    ans = load_mod(random_subtopic, q)
+    #dic_of_answers = add_to_answers(dic_of_answers, str(q), ans)
+    dic_of_answers[str(q)] = str(ans)
+    print(dic_of_answers)
+
+  with open("pdf/a/a.json", "w") as n:
+    n.write("")
+
+  with open("pdf/a/a.json", "w") as o:
+    json.dump(dic_of_answers, o)
+
 
 
 def assign_sa_marks(s):

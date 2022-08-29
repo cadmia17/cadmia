@@ -40,11 +40,19 @@ def return_question():
   solution = dict_ints["sol"]["n"]
 
   answers = [dict_ints["p"], dict_ints["q"], dict_ints["r"], dict_ints["s"]]
+  random.shuffle(answers)
+
+  sol_letter = ""
+
+  #get letter of answer
+  for a in range(0, len(answers)):
+    if solution == a:
+      sol_letter = ext_math.num_to_let(a)
 
   question_dic = {
     "type": "multiple_choice",
     "question": str(question),
-    "answer": str(solution),
+    "answer": str(sol_letter),
     "answer_a": str(answers[0]),
     "answer_b": str(answers[1]),
     "answer_c": str(answers[2]),

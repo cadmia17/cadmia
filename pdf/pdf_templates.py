@@ -118,7 +118,7 @@ class PDF(FPDF):
 
 
   def short_answer(self, sth=6.5, s=set):
-    self.sth = sth
+    self.sth = sth #note to self: revert this section to pre-28/8
     
     self.set_top_margin(19)
     self.add_page() #page 1 of mc
@@ -129,9 +129,43 @@ class PDF(FPDF):
     
     self.set_font("Times", "B", size=12)
     self.cell(200, 5, txt=f"{s['sa_marks']} marks", ln=1, align="L")
-    self.cell(200, 5, txt=f"Attempt Questions {s['mc_marks'] + 1}-{s['qns']}", ln=1, align="L")
-    self.cell(200, 5, txt=f"Allow about {s['sa_time']} minutes for this section", ln=1, align="L")
+    self.cell(200, 5, txt=f"Questions {s['mc_marks'] + 1}-{s['qns']}", ln=1, align="L")
+    self.cell(200, 5, txt=f"", ln=1, align="L")
     self.ln(h=1)
+
+
+
+  def marking_guide(self, sth=6.5, s=set, q_dic={}):
+    self.sth = sth
+    
+    self.set_top_margin(19)
+    self.add_page() #page 1 of mc
+    
+    self.set_font("Times", "B", size=14)
+    self.cell(200, 15, txt="Marking Guide", ln=1, align="L")
+    
+    
+    self.set_font("Times", "B", size=12)
+    self.cell(200, 5, txt=f"{s['mc_marks']} marks", ln=1, align="L")
+    self.cell(200, 5, txt=f"Questions 1{self.DASH}{s['mc_marks']}", ln=1, align="L")
+    self.cell(200, 5, txt=f"", ln=1, align="L")
+    self.ln(h=1)
+
+    q_data = []
+    col_width = self.epw / 2
+    
+    for q in q_dic:
+      q_data.append([q, q_dic[q]])
+
+    self.multi_cell(col_width, sth, "Question", border=1, new_x="RIGHT", new_y="TOP", max_line_height=self.font_size, align="C")
+    self.multi_cell(col_width, sth, "Answer", border=1, new_x="RIGHT", new_y="TOP", max_line_height=self.font_size, align="C")
+    self.ln(sth)
+    self.set_font("Times", size=12)
+    
+    for row in q_data: #taken with perms from fpdf2 docs
+      for datum in row:
+        self.multi_cell(col_width, sth, datum, border=1, new_x="RIGHT", new_y="TOP", max_line_height=self.font_size, align="C")
+      self.ln(sth)
 
 
 
