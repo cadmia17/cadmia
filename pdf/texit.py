@@ -24,7 +24,7 @@ ignore = ["type", "answer", "partite"]
 
 class PDF(PDF):
   def parse_parser(self, val, indent):
-    MAGIC_NUMBER = 11 / 32
+    RESIZE_COEFF = 11 / 32
 
     val_list = val.split("$") #splits into text, formula, text, etcc
     
@@ -52,8 +52,8 @@ class PDF(PDF):
   
           image_counter += 1
   
-          fixed_img_w = (img_w * MAGIC_NUMBER) #magic number, sorry
-          fixed_img_h = (img_h * MAGIC_NUMBER)
+          fixed_img_w = (img_w * RESIZE_COEFF) #magic number, sorry
+          fixed_img_h = (img_h * RESIZE_COEFF)
   
           new_x = x_formula + fixed_img_w
           #print(f"x before img ({x_formula}) + fixed img's width ({fixed_img_w}) = new x ({new_x})")

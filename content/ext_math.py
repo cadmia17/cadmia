@@ -18,6 +18,30 @@ def dot_product(v1, v2):
   return "among us jumpscare" #how do you write exceptions
 
 
+def v_neg(v):
+  vout = []
+  for i in range(0, len(v)):
+    vout.append(-i)
+  return vout
+
+def v_add(v1, v2):
+  if len(v1) == len(v2): #if same # of components
+    vout = []
+    for i in range(0, len(v1)):
+      vout.append(v1[i] + v2[i])
+    return vout
+  return "among us jumpscare" #how do you write exceptions
+
+
+def v_sub(v1, v2):
+  if len(v1) == len(v2): #if same # of components
+    vout = []
+    for i in range(0, len(v1)):
+      vout.append(v1[i] - v2[i])
+    return vout
+  return "among us jumpscare" #how do you write exceptions
+
+
 def sign(n):
   if n > 0:
     return "+"
@@ -109,6 +133,8 @@ def quad_formula(a, b, c):
   
   else: #complex solution, not in x1
     return []
+
+
 
 
 def lead(n): #small strip sign #lead coeff

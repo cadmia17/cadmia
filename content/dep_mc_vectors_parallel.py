@@ -41,15 +41,17 @@ def return_question():
   for a in answer_buffer:
     answers.append(str(solution + a))
 
-  answers.sort()
+  random.shuffle(answers)
 
   
-  sol_letter = "B"
+  sol_letter = ""
 
   #get letter of answer
+  print("")
   for a in range(0, len(answers)):
-    if solution == a:
-      sol_letter = ext_math.num_to_let(a)
+    print(f"s: {solution}, a: {ext_math.num_to_let(a + 1)}, answers[a]: {answers[a]}")
+    if str(solution) == str(answers[a]):
+      sol_letter = ext_math.num_to_let(a + 1)
 
   question_dic = {
     "type": "multiple_choice",

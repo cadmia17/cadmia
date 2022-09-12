@@ -64,7 +64,7 @@ def pdf(time=120, difficulty=1.0, blocklist=[], pen="black", output="pdf/output.
   
   with open("pdf/a/a.json") as ans:
     ans_dic = json.load(ans)
-    pdf.marking_guide(q_dic=ans_dic)
+    pdf.marking_guide(q_dic=ans_dic, s=s)
   
   pdf.output(output)
   increment_pdf_counter()

@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, send_from_directory
 from threading import Thread
 from pdf.pdf import pdf
 from pdf.algo import omct as topics
-import os
 
 UPLOAD_FOLDER = '/uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -40,17 +39,13 @@ def cadmia_settings(): #code from stackoverflow
 @app.route("/pdf/")
 def cadmia_pdf():
   time = request.args.get("time")
-  print(f"1main time={time}")
   difficulty = int(request.args.get("difficulty")) / 100
 
   permitted_topics = []
 
   for check_topic in range(0, NUMBER_OF_TOPICS):
-    print(f"\n\n&&{NUMBER_OF_TOPICS}")
-    print(check_topic)
     if request.args.get(f"t{check_topic}") is not None:
       permitted_topics.append(TOPIC_LIST[check_topic])
-      print(f"{permitted_topics}")
 
   blocked_topics = []
   
@@ -58,18 +53,9 @@ def cadmia_pdf():
     if topic not in permitted_topics:
       blocked_topics.append(topic)
 
-  
-
   pdf(time=time, difficulty=difficulty, blocklist=blocked_topics, output="uploads/pdf.pdf")
   
-  print(os.getcwd())
-  print([f for f in os.listdir(".") if os.path.isfile(f)])
-
-
   return redirect("/uploads/pdf.pdf")
-
-
-
 
 
 @app.route('/<foldername>/<path:filename>')

@@ -5,8 +5,8 @@ import json
 sa_topics = ["q_polys", "q_vectors_parallel", "q_vectors_perpendicular", "mc_vectors_parallel"]
 
 original_mct = {
-  "vectors": ["mc_vectors_parallel"],
-  "polys": ["mc_polys"],
+  "vectors": ["mc_vectors_addition"],
+  "polys": ["mc_polys_factor", "mc_polys_remainder"],
   "combs": ["mc_combs"]
 }
 
@@ -52,7 +52,7 @@ def generate_mc(num, blocklist=[]):
     ans = load_mod(random_subtopic, q)
     #dic_of_answers = add_to_answers(dic_of_answers, str(q), ans)
     dic_of_answers[str(q)] = str(ans)
-    print(dic_of_answers)
+    #print(dic_of_answers)
 
   with open("pdf/a/a.json", "w") as n:
     n.write("")
@@ -65,7 +65,7 @@ def generate_mc(num, blocklist=[]):
 def assign_sa_marks(s):
   #step 1: assign marks to each question
   #luckily i already did question calcs in settings config itself
-  print(s)
+  #print(s)
   sa_marks = []
   
   marks_remaining = s["sa_marks"]

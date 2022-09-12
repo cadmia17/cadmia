@@ -1,1 +1,1 @@
-{"type": "multiple_choice", "question": "The polynomial $%x^3 - 2x^2 - 9x + 18$ does not have a root at which value of x?", "answer": "", "answer_a": "3", "answer_b": "-3", "answer_c": "2", "answer_d": "-1"}
+{"type": "multiple_choice", "question": "What is the remainder when the polynomial $%x^3 - 5x^2 - 16x + 80$ is divided by $%x - 3$?", "answer": "C", "answer_a": "19", "answer_b": "10", "answer_c": "14", "answer_d": "18"}

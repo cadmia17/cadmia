@@ -32,7 +32,7 @@ def trim(num, str):
     return f"{ext_math.const(num)}{str}"
 
 def create_question(a, b, c, d):
-  return f"(combs) The polynomial $%{ext_math.lead(a)}x^3 {trim(b, 'x^2')} {trim(c, 'x')} {ext_math.const(d)}$ does not have a root at which value of x?"
+  return f"The polynomial $%{ext_math.lead(a)}x^3 {trim(b, 'x^2')} {trim(c, 'x')} {ext_math.const(d)}$ does not have a root at which value of x?"
 
 def return_question():
   dict_ints = generator()
