@@ -1,1 +1,1 @@
-{"type": "multiple_choice", "question": "(combs, fix) The polynomial $%x^3 + 4x^2 +x - 6$ does not have a root at which value of x?", "answer": "2", "answer_a": "-3", "answer_b": "1", "answer_c": "-2", "answer_d": "2"}
+{"type": "multiple_choice", "question": "What is the remainder when the polynomial $%x^3 - 8x^2 + 19x - 12$ is divided by $%x + 4$?", "answer": "A", "answer_a": "-280", "answer_b": "-277", "answer_c": "-276", "answer_d": "-279"}

@@ -1,1 +1,1 @@
-{"type": "multiple_choice", "question": "(combs, fix) The polynomial $%x^3 + 4x^2 - 9x - 36$ does not have a root at which value of x?", "answer": "-1", "answer_a": "-4", "answer_b": "-3", "answer_c": "3", "answer_d": "-1"}
+{"type": "multiple_choice", "question": "What is the remainder when the polynomial $%x^3  - 13x + 12$ is divided by $%x + 2$?", "answer": "C", "answer_a": "33", "answer_b": "31", "answer_c": "30", "answer_d": "26"}
